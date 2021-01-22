@@ -1,0 +1,36 @@
+version: "3"
+services:
+  react:                 
+    container_name: react
+    image: "darack/react:0.1"
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend   
+    networks:
+      - backend           
+  express:           
+    container_name: express
+    image: "darack/express:0.1"               
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    networks:
+      - backend  
+ 
+  nginx:
+    restart: always
+    container_name: "nginx"
+    image: "darack/nginx:0.1"
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx 
+    volumes: 
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+    networks:
+      - backend
+    ports: 
+      - "80:80"
+    
+networks: 
+  backend:
+    driver: bridge

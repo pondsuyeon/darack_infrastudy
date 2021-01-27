@@ -23,9 +23,7 @@ services:
     image: "darack/nginx:0.1"
     build:
       dockerfile: Dockerfile
-      context: ./nginx 
-    volumes: 
-      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+      context: ./nginx
     networks:
       - backend
     ports: 

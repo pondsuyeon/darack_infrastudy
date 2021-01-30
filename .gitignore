@@ -1,7 +1,7 @@
-/backend/node_modules
-/frontend/node_modules
+/source/backend/node_modules
+/source/frontend/node_modules
 
-/frontend/build
+/source/frontend/build
 
 .DS_Store
 .env.local

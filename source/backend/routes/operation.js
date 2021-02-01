@@ -20,21 +20,18 @@ router.post('/sum', function(req, res, next) {
     req.cache.get(key, function(err, data){
         if(err || data === null){
             value = {
-                answer: first+second,
-                cached: false
+                answer: first+second
             }
-            var inputValue = {
-                answer: value.answer,
-                cached: true
-            }
-            req.cache.set(key, JSON.stringify(inputValue), function(err, data){
+            req.cache.set(key, JSON.stringify(value), function(err, data){
                 if(err){
                     console.log(err);
                     res.send("error"+err);
                 }
             });
+            value.cached = false;
         }else{
             value = JSON.parse(data);
+            value.cached = true;
         }
         res.send(value);
     });

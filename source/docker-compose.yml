@@ -16,7 +16,6 @@ services:
       context: ./backend
     networks:
       - backend  
- 
   nginx:
     restart: always
     container_name: "nginx"
@@ -28,7 +27,18 @@ services:
       - backend
     ports: 
       - "80:80"
-    
+  redis:
+    container_name: redis
+    image: "darack/redis:0.1"
+    build:
+      dockerfile: Dockerfile
+      context: ./redis
+    volumes:
+      - /home/darack/infrastudy/source/redis/data:/data
+    networks:
+      - backend
+
+
 networks: 
   backend:
     driver: bridge

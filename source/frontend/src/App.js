@@ -15,6 +15,7 @@ function App() {
     });
   };
   const sumValues = ()=>{
+    console.log(JSON.stringify(data));
     fetch('/api/operation/sum',{
       method: 'POST',
       headers:{
@@ -22,7 +23,7 @@ function App() {
       },
       body:JSON.stringify(data),
     })
-    .then(response =>response.json())
+    .then(response => response.json())
     .then(response => {
       setAnswer("Answer : "+response.answer);
       console.log(response);

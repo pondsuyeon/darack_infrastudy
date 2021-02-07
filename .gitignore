@@ -3,6 +3,7 @@
 
 /source/frontend/build
 
+/source/jenkins/jenkins_home
 .DS_Store
 .env.local
 .env.development.local
